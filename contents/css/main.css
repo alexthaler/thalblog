@@ -64,24 +64,13 @@ p {
   margin-bottom: 9px;
 }
 
-
 #container {
   min-width: 300px;
 }
 
 body > header {
-  border-bottom: 2px solid #0c3a7f;
-  background-color: #647ba2;
+  border-bottom: 2px solid #000;
   padding-top: 5px;
-  color: #fff;
-  background: rgb(23,72,146);
-  background: -moz-linear-gradient(top,  rgba(23,72,146,1) 0%, rgba(28,86,149,1) 25%, rgba(37,93,161,1) 50%, rgba(51,107,164,1) 75%, rgba(54,111,165,1) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(23,72,146,1)), color-stop(25%,rgba(28,86,149,1)), color-stop(50%,rgba(37,93,161,1)), color-stop(75%,rgba(51,107,164,1)), color-stop(100%,rgba(54,111,165,1)));
-  background: -webkit-linear-gradient(top,  rgba(23,72,146,1) 0%,rgba(28,86,149,1) 25%,rgba(37,93,161,1) 50%,rgba(51,107,164,1) 75%,rgba(54,111,165,1) 100%);
-  background: -o-linear-gradient(top,  rgba(23,72,146,1) 0%,rgba(28,86,149,1) 25%,rgba(37,93,161,1) 50%,rgba(51,107,164,1) 75%,rgba(54,111,165,1) 100%);
-  background: -ms-linear-gradient(top,  rgba(23,72,146,1) 0%,rgba(28,86,149,1) 25%,rgba(37,93,161,1) 50%,rgba(51,107,164,1) 75%,rgba(54,111,165,1) 100%);
-  background: linear-gradient(top,  rgba(23,72,146,1) 0%,rgba(28,86,149,1) 25%,rgba(37,93,161,1) 50%,rgba(51,107,164,1) 75%,rgba(54,111,165,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#174892', endColorstr='#366fa5',GradientType=0 );
 }
 
 body >footer *,
@@ -108,14 +97,9 @@ body > footer .inner {
 }
 
 body > header h1 {
-  font-family: 'Fredericka the Great', cursive;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 39px;
   line-height: 39px;
-  text-shadow: rgba(255,255,255,0.3) 0 0 10px;
-}
-
-body > header a {
-  color: #fff;
 }
 
 body > header h1 a:hover {
@@ -125,20 +109,18 @@ body > header h1 a:hover {
 body > header p {
   margin-top: 3px;
   text-indent: 10px;
-  font-style: italic;
 }
 
 body > header a.back {
   float: right;
   text-decoration: none;
-  color: #fff;
+  color: #000;
   margin-right: 10px;
   margin-top: 20px;
-  opacity: 0.5;
+  opacity: 1;
 }
 body > header a.back:hover {
   opacity: 1;
-  text-shadow: rgba(255,255,255,0.3) 0 0 10px;
 }
 
 #content {
@@ -226,6 +208,11 @@ pre code {
   margin: 0;
   border: 0;
   background: transparent;
+}
+
+.darklink {
+  color: #252824;
+  text-decoration: none;
 }
 
 .archive ul {
