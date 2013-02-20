@@ -11,3 +11,5 @@ The blog is now being generated using [wintersmith](http://jnordberg.github.com/
 
 I am working on some tools to aid in publishing a blog with winterpress which I will probably post later.  Until then please bare with me and the odd themeing.  
 
+Update: Now with 100% new theme.  Custom changes are still coming.
+
