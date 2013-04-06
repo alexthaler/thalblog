@@ -1,0 +1,9 @@
+{
+  "locals": {
+    "url": "http://alexthaler.github.io",
+    "name": "ThalBlog",
+    "owner": "Alex Thaler",
+    "description": "Code, ideas and anything else that pops into my head.",
+    "index_articles": 3
+  }
+}

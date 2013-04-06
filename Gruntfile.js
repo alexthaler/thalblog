@@ -24,6 +24,16 @@ module.exports = function(grunt) {
       });
   });
 
+  grunt.registerTask("prebuild", "tasks that need to be done before calling build", function() {
+      grunt.file.copy('config.json', 'config.json.bak');
+      grunt.file.copy('publishConfig.json', 'config.json');
+  });
+
+  grunt.registerTask("postbuild", "tasks that need to be done after calling build", function() {
+      grunt.file.copy('config.json.bak', 'config.json');
+      grunt.file.delete('config.json.bak');
+  });
+
   grunt.registerTask("build", "Calls through to wintersmith build, builds out the generated site", function (prop) {
       var done = this.async();
       grunt.log.write("Calling wintersmith build");
@@ -41,13 +51,14 @@ module.exports = function(grunt) {
       });
   });
 
-  grunt.registerTask("publish", "publish", function() {
+  grunt.registerTask("copyPublish", "task that copies build directory to another directory", function() {
       var done = this.async();
-      grunt.log.write("publshing site to /tmp/");
+      var localConfig = grunt.file.readJSON('gruntConfig.js');
+      grunt.log.write("publshing site to " + localConfig.publish.gitdir);
 
       grunt.util.spawn({
         cmd : "cp",
-        args : ["-r", "build/", "/tmp/alexblog/"]
+        args : ["-r", 'build/.', localConfig.publish.gitdir]
       }, function (err, result) {
         if(err) {
           grunt.log.error("holy crap!" + err);
@@ -57,4 +68,9 @@ module.exports = function(grunt) {
         return done(true);
       });
   });
+
+  grunt.registerTask('publish', 'docs', function() {
+    grunt.task.run('prebuild', 'build', 'copyPublish', 'postbuild');
+  })
+
 };
