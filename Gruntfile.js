@@ -84,7 +84,6 @@ module.exports = function(grunt) {
           git.log.writeln('success!').ok();
           return done(true);
         }
-        
         return done(false);
       });    
   });
