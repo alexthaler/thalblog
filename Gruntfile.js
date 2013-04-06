@@ -5,6 +5,9 @@ module.exports = function(grunt) {
       grunt.log.write('Logging some stuff...').ok();
   });
 
+  grunt.registerTask("clean", "cleans up generated files", function() {
+    grunt.file.delete('build');
+  });
 
   grunt.registerTask("preview", "Calls through to wintersmith preview", function (prop) {
       var done = this.async();
