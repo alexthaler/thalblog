@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       grunt.util.spawn({
         cmd : "wintersmith",
         args : ["build"]
-      }, function(err, result) {
+      }, function (err, result) {
         if(err) {
           grunt.log.error("holy crap!" + err).fail();
           return done(false);
@@ -43,5 +43,18 @@ module.exports = function(grunt) {
 
   grunt.registerTask("publish", "publish", function() {
       var done = this.async();
+      grunt.log.write("publshing site to /tmp/");
+
+      grunt.util.spawn({
+        cmd : "cp",
+        args : ["-r", "build/", "/tmp/alexblog/"]
+      }, function (err, result) {
+        if(err) {
+          grunt.log.error("holy crap!" + err);
+          return done(false);
+        }
+        grunt.log.writeln("building complete").ok();
+        return done(true);
+      });
   });
 };
