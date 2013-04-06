@@ -57,7 +57,7 @@ module.exports = function(grunt) {
   grunt.registerTask("copyPublish", "task that copies build directory to another directory", function() {
       var done = this.async();
       var localConfig = grunt.file.readJSON('gruntConfig.js');
-      grunt.log.write("publshing site to " + localConfig.publish.gitdir);
+      grunt.log.writeln("publshing site to " + localConfig.publish.gitdir);
 
       grunt.util.spawn({
         cmd : "cp",
@@ -70,6 +70,30 @@ module.exports = function(grunt) {
         grunt.log.writeln("building complete").ok();
         return done(true);
       });
+  });
+
+  grunt.registerTask("gitCommitPush", "task that goes to the gitdir and commits and pushes the changes", function() {
+    var done = this.async();
+      var localConfig = grunt.file.readJSON('gruntConfig.js');
+      grunt.log.writeln("commiting and pushing changes to master in " + localConfig.publish.gitdir);
+
+      grunt.util.spawn({
+        cmd : "cd",
+        args : [localConfig.publish.gitdir]
+      }, function (err, result) {
+        if(!err) {
+          grunt.util.spawn({
+            cmd : "./commitandpush.sh"
+          }, function (err, result) {
+            if(!err) {
+              grunt.log.writeln("changes successfully pushed to master");
+              return done(true);
+            }
+          });
+        }
+        
+        return done(false);
+      });    
   });
 
   grunt.registerTask('publish', 'docs', function() {
