@@ -78,18 +78,11 @@ module.exports = function(grunt) {
       grunt.log.writeln("commiting and pushing changes to master in " + localConfig.publish.gitdir);
 
       grunt.util.spawn({
-        cmd : "cd",
-        args : [localConfig.publish.gitdir]
+        cmd : localConfig.publish.gitdir + 'commitandpush.sh',
       }, function (err, result) {
         if(!err) {
-          grunt.util.spawn({
-            cmd : "./commitandpush.sh"
-          }, function (err, result) {
-            if(!err) {
-              grunt.log.writeln("changes successfully pushed to master");
-              return done(true);
-            }
-          });
+          git.log.writeln('success!').ok();
+          return done(true);
         }
         
         return done(false);
@@ -97,7 +90,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('publish', 'docs', function() {
-    grunt.task.run('prebuild', 'build', 'copyPublish', 'postbuild');
+    grunt.task.run('prebuild', 'build', 'copyPublish', 'gitCommitPush', 'postbuild');
   })
 
 };
