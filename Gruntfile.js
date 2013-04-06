@@ -78,7 +78,7 @@ module.exports = function(grunt) {
     grunt.log.writeln("commiting and pushing changes to master in " + localConfig.publish.gitdir);
     shell = require('shelljs');
     shell.exec('cd ' + localConfig.publish.gitdir + '; ./commitandpush.sh');
-      
+      return done(true);
   });
 
   grunt.registerTask('publish', 'docs', function() {
