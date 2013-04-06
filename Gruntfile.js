@@ -74,18 +74,11 @@ module.exports = function(grunt) {
 
   grunt.registerTask("gitCommitPush", "task that goes to the gitdir and commits and pushes the changes", function() {
     var done = this.async();
-      var localConfig = grunt.file.readJSON('gruntConfig.js');
-      grunt.log.writeln("commiting and pushing changes to master in " + localConfig.publish.gitdir);
-
-      grunt.util.spawn({
-        cmd : localConfig.publish.gitdir + 'commitandpush.sh',
-      }, function (err, result) {
-        if(!err) {
-          git.log.writeln('success!').ok();
-          return done(true);
-        }
-        return done(false);
-      });    
+    var localConfig = grunt.file.readJSON('gruntConfig.js');
+    grunt.log.writeln("commiting and pushing changes to master in " + localConfig.publish.gitdir);
+    shell = require('shelljs');
+    shell.exec('cd ' + localConfig.publish.gitdir + '; ./commitandpush.sh');
+      
   });
 
   grunt.registerTask('publish', 'docs', function() {
